@@ -12,7 +12,9 @@ class Calcualtor extends StatefulWidget {
 class _CalcualtorState extends State<Calcualtor> {
   Widget NumButton(String btnText, Color? btnColor, Color txtColor) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        calculate(btnText);
+      },
       style: ElevatedButton.styleFrom(
         fixedSize: Size(70, 70),
         shape: CircleBorder(),
@@ -27,13 +29,13 @@ class _CalcualtorState extends State<Calcualtor> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Calculator'),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        centerTitle: true,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 5),
@@ -42,7 +44,7 @@ class _CalcualtorState extends State<Calcualtor> {
             Padding(
               padding: EdgeInsets.all(10),
               child: Text(
-                '0',
+                text,
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.white, fontSize: 80),
               ),
@@ -94,22 +96,61 @@ class _CalcualtorState extends State<Calcualtor> {
               ElevatedButton(
                 onPressed: () {},
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(28, 12, 90, 12),
-                  child: Text(
-                    '0',
-                    style: TextStyle(fontSize: 35, color: Colors.white),
-                  ),
+                  padding: EdgeInsets.fromLTRB(10, 0, 52, 0),
+                  child: NumButton('0', Colors.grey[850], Colors.white),
                 ),
                 style: ElevatedButton.styleFrom(
                     shape: StadiumBorder(), primary: Colors.grey[850]),
               ),
               NumButton('.', Colors.grey[850], Colors.white),
-              NumButton('/', Colors.orange, Colors.white),
+              NumButton('=', Colors.orange, Colors.white),
             ],
           ),
           SizedBox(height: 10),
         ]),
       ),
     );
+  }
+
+  //logic
+  int firstNum = 0;
+  int secondNum = 0;
+  String result = '';
+  String text = '';
+  String operation = '';
+
+  void calculate(String btnText) {
+    if (btnText == 'C') {
+      result = '';
+      text = '';
+      firstNum = 0;
+      secondNum = 0;
+    } else if (btnText == '+' ||
+        btnText == '-' ||
+        btnText == 'x' ||
+        btnText == '/') {
+      firstNum = int.parse(text);
+      result = '';
+      operation = btnText;
+    } else if (btnText == '=') {
+      secondNum = int.parse(text);
+      if (operation == '+') {
+        result = (firstNum + secondNum).toString();
+      }
+      if (operation == '-') {
+        result = (firstNum - secondNum).toString();
+      }
+      if (operation == 'x') {
+        result = (firstNum * secondNum).toString();
+      }
+      if (operation == '/') {
+        result = (firstNum / secondNum).toString();
+      }
+    } else {
+      result = int.parse(text + btnText).toString();
+    }
+    setState(() {
+      text = result;
+    });
   }
 }
