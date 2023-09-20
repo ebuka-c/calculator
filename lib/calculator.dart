@@ -20,94 +20,99 @@ class _CalcualtorState extends State<Calcualtor> {
         shape: CircleBorder(),
         primary: btnColor,
       ),
-      child: Text(
-        btnText,
-        style: TextStyle(fontSize: 25, color: txtColor),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Text(
+          btnText,
+          style: TextStyle(fontSize: 25, color: txtColor),
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text('Calculator'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Text(
-                text,
-                textAlign: TextAlign.left,
-                style: TextStyle(color: Colors.white, fontSize: 80),
-              ),
-            )
-          ]),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NumButton('C', Colors.grey, Colors.black),
-              NumButton('+/-', Colors.grey, Colors.black),
-              NumButton('%', Colors.grey, Colors.black),
-              NumButton('/', Colors.orange, Colors.white),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NumButton('7', Colors.grey[850], Colors.white),
-              NumButton('8', Colors.grey[850], Colors.white),
-              NumButton('9', Colors.grey[850], Colors.white),
-              NumButton('x', Colors.orange, Colors.white),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NumButton('4', Colors.grey[850], Colors.white),
-              NumButton('5', Colors.grey[850], Colors.white),
-              NumButton('6', Colors.grey[850], Colors.white),
-              NumButton('-', Colors.orange, Colors.white),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              NumButton('1', Colors.grey[850], Colors.white),
-              NumButton('2', Colors.grey[850], Colors.white),
-              NumButton('3', Colors.grey[850], Colors.white),
-              NumButton('+', Colors.orange, Colors.white),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(10, 0, 52, 0),
-                  child: NumButton('0', Colors.grey[850], Colors.white),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          title: Text('Calculator'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  text,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(color: Colors.white, fontSize: 80),
                 ),
-                style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(), primary: Colors.grey[850]),
-              ),
-              NumButton('.', Colors.grey[850], Colors.white),
-              NumButton('=', Colors.orange, Colors.white),
-            ],
-          ),
-          SizedBox(height: 10),
-        ]),
+              )
+            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                NumButton('C', Colors.grey, Colors.black),
+                NumButton('+/-', Colors.grey, Colors.black),
+                NumButton('%', Colors.grey, Colors.black),
+                NumButton('/', Colors.orange, Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                NumButton('7', Colors.grey[850], Colors.white),
+                NumButton('8', Colors.grey[850], Colors.white),
+                NumButton('9', Colors.grey[850], Colors.white),
+                NumButton('x', Colors.orange, Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                NumButton('4', Colors.grey[850], Colors.white),
+                NumButton('5', Colors.grey[850], Colors.white),
+                NumButton('6', Colors.grey[850], Colors.white),
+                NumButton('-', Colors.orange, Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                NumButton('1', Colors.grey[850], Colors.white),
+                NumButton('2', Colors.grey[850], Colors.white),
+                NumButton('3', Colors.grey[850], Colors.white),
+                NumButton('+', Colors.orange, Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(10, 0, 52, 0),
+                    child: NumButton('0', Colors.grey[850], Colors.white),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(), primary: Colors.grey[850]),
+                ),
+                NumButton('.', Colors.grey[850], Colors.white),
+                NumButton('=', Colors.orange, Colors.white),
+              ],
+            ),
+            SizedBox(height: 10),
+          ]),
+        ),
       ),
     );
   }
